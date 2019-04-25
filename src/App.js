@@ -23,18 +23,37 @@ class App extends React.Component {
         task: '',
         id: '',
         completed: ''
-      }
+      },
+      // search:[]
     };
   }
 
   handleChange = event => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     this.setState({
       todo: {
         ...this.state.todo,
         [event.target.name]: event.target.value
       }
     });
+  };
+
+  handleSearch = event => {
+    let curList = [];
+    let newList = [];
+
+    if(event.target.value !== ""){
+      curList = this.state.todoState;
+
+      newList = curList.filter(item => item.task.includes(event.target.value))
+    }
+
+    this.setState({
+      
+      todoState:newList 
+      
+    });
+    console.log(this.state.search)
   };
 
   
@@ -47,7 +66,7 @@ class App extends React.Component {
       id:Date.now()
     };
 
-    console.log(newData)
+    // console.log(newData)
 
     this.setState({
       
@@ -77,6 +96,16 @@ class App extends React.Component {
     );
   }
 
+  // searchTodo = () => {
+  //   console.log(this.state.search)
+  //   return (
+  //     this.setState({
+        
+  //       search:this.state.search
+  //     })
+  //   );
+  // }
+
   render() {
     return (
       <div className='App'>
@@ -86,6 +115,8 @@ class App extends React.Component {
           addProp={this.addTodo}
           handleProp={this.handleChange} 
           removeProp = {this.removeTodo}
+          // search = {this.searchTodo}
+          handleSearchProp = {this.handleSearch}
           />
       </div>
     );
