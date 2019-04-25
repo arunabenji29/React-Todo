@@ -1,6 +1,8 @@
 import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
+import './App.css'
+
 const todos = [
   {
     task: 'Organize Garage',
@@ -56,13 +58,35 @@ class App extends React.Component {
     });
   };
 
+  toggleComplete = (id) => {
+    return (
+      this.setState({
+        todoState: this.state.todoState.map(item =>
+          item.id === id ? {...item, completed: !item.completed } : item
+          )
+      })
+
+    );
+  };
+
+  removeTodo = () => {
+    return (
+      this.setState({
+        todoState:this.state.todoState.filter(item => !item.completed)
+      })
+    );
+  }
+
   render() {
     return (
-      <div>
-        <TodoList listProp={this.state.todoState} />
+      <div className='App'>
+        <h1>Todo App</h1>
+        <TodoList listProp={this.state.todoState} toggleProp = {this.toggleComplete}/>
         <TodoForm formProp={this.state}
           addProp={this.addTodo}
-          handleProp={this.handleChange} />
+          handleProp={this.handleChange} 
+          removeProp = {this.removeTodo}
+          />
       </div>
     );
   }

@@ -1,8 +1,23 @@
 import React from 'react'
-
+import './Todo.css'
 const Todo = (props) => {
+
+    let classNames = 'item';
+
+    if(props.todoProp.completed){
+        console.log('inside if: ' + props.todoProp.completed)
+        classNames += " finished";
+        console.log(classNames)
+    }
+
+    const updateCompletedlist = () => {
+        props.toggleListProp(props.todoProp.id)
+        console.log('update: ' + props.todoProp.completed)
+    }
+
     return (
-        <div>
+        <div className={classNames} onClick = {updateCompletedlist}>
+           
             <p>{props.todoProp.task}</p>
             {/* <p>{props.todoProp.id}=Date.now()</p> */}
         </div>

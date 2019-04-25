@@ -1,0 +1,24 @@
+
+.item.finished{
+    background:red;
+    text-decoration: line-through;
+}
+
+.item{
+    background:yellow;
+}
+
+.todo-area{
+    border:1px solid #eee;
+    /* box-shadow:#ccc; */
+    width:350px;
+    margin:0 20%;
+    background:grey;
+    
+}
+
+button{
+    background:salmon;
+    color:white;
+    margin-left:20px;
+}
