@@ -1,11 +1,14 @@
 
 .item.finished{
-    background:red;
+    background:black;
+    color:white;
     text-decoration: line-through;
 }
 
 .item{
-    background:yellow;
+    background:white;
+    margin:0 20%;
+    
 }
 
 .todo-area{
