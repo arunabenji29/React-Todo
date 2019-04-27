@@ -24,18 +24,19 @@ class App extends React.Component {
         id: '',
         completed: ''
       },
-      // search:[]
+      search:[]
     };
   }
 
   handleChange = event => {
-    // console.log(event.target.value);
+    console.log(event.target.value);
     this.setState({
       todo: {
         ...this.state.todo,
         [event.target.name]: event.target.value
       }
     });
+    console.log(this.state.todo.name);
   };
 
   handleSearch = event => {
@@ -48,12 +49,19 @@ class App extends React.Component {
       newList = curList.filter(item => item.task.includes(event.target.value))
     }
 
+    else{
+      newList = this.state.todoState;
+    }
+
     this.setState({
       
-      todoState:newList 
+      search:newList,
+      
       
     });
-    console.log(this.state.search)
+
+    
+    console.log( )
   };
 
   
@@ -73,7 +81,8 @@ class App extends React.Component {
       todoState: [...this.state.todoState, newData],
       todo: {
         task: '',
-      }
+      },
+      search:[]
     });
   };
 
@@ -110,13 +119,16 @@ class App extends React.Component {
     return (
       <div className='App'>
         <h1>Todo App</h1>
-        <TodoList listProp={this.state.todoState} toggleProp = {this.toggleComplete}/>
+        <TodoList listProp={this.state} 
+        toggleProp = {this.toggleComplete} 
+        />
         <TodoForm formProp={this.state}
           addProp={this.addTodo}
           handleProp={this.handleChange} 
           removeProp = {this.removeTodo}
-          // search = {this.searchTodo}
           handleSearchProp = {this.handleSearch}
+          // search = {this.searchTodo}
+          
           />
       </div>
     );

@@ -4,13 +4,30 @@ import React from 'react'
 import Todo from './Todo';
 
 const TodoList = (props) => {
-    return (
-        <div>
-            {props.listProp.map(todoData => (
-                <Todo todoProp={todoData} toggleListProp = {props.toggleProp}/>
-            ))}
-        </div>
-    );
+
+    if (props.listProp.search !== '') {
+        return (
+
+            <div>
+                {props.listProp.search.map(searchData => (
+                        <Todo todoProp={searchData} toggleListProp={props.toggleProp}/>
+                    )
+                )}
+            </div>
+        );
+    }
+    if (props.listProp.search === '') {
+        return (
+            <div>
+                {props.listProp.todoState.map(todoData => (
+                    <Todo todoProp={todoData} toggleListProp={props.toggleProp} />
+                ))}
+            </div>
+
+        );
+    }
+
+    
 }
 
 export default TodoList
