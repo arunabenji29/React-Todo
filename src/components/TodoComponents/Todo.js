@@ -2,7 +2,7 @@ import React from 'react'
 import './Todo.css'
 const Todo = (props) => {
     // console.log('Todo search'+props.search)
-    console.log('Todo'+props.todoProp.task)
+    // console.log('Todo'+props.todoProp.task)
     let classNames = 'item';
 
     if(props.todoProp.completed){

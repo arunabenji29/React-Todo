@@ -5,7 +5,7 @@ import Todo from './Todo';
 
 const TodoList = (props) => {
 
-    if (props.listProp.search !== '') {
+    if (props.listProp.search.length !== 0) {
         return (
 
             <div>
@@ -16,7 +16,8 @@ const TodoList = (props) => {
             </div>
         );
     }
-    if (props.listProp.search === '') {
+    // if (props.listProp.search.length === ) {
+        else{
         return (
             <div>
                 {props.listProp.todoState.map(todoData => (

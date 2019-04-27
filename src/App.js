@@ -24,44 +24,48 @@ class App extends React.Component {
         id: '',
         completed: ''
       },
-      search:[]
+      search:[],
+      inputField:''
     };
   }
 
   handleChange = event => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     this.setState({
       todo: {
         ...this.state.todo,
         [event.target.name]: event.target.value
       }
     });
-    console.log(this.state.todo.name);
+    // console.log(this.state.todo.name);
   };
 
-  handleSearch = event => {
-    let curList = [];
-    let newList = [];
+  handleSearchChange = event => {
+    // console.log(event.target.value);
+    this.setState({
+      
+        [event.target.name]: event.target.value
+      
+    });
+    console.log(this.state.inputField);
+  };
 
-    if(event.target.value !== ""){
-      curList = this.state.todoState;
-
-      newList = curList.filter(item => item.task.includes(event.target.value))
-    }
-
-    else{
-      newList = this.state.todoState;
-    }
+  addSearch = event => {
+    event.preventDefault();
+    
+    let searchList = this.state.todoState.filter(item => 
+      item.task.includes(this.state.inputField));
+    
 
     this.setState({
       
-      search:newList,
+      search:searchList,
       
       
     });
 
     
-    console.log( )
+    console.log(this.state.search)
   };
 
   
@@ -126,8 +130,8 @@ class App extends React.Component {
           addProp={this.addTodo}
           handleProp={this.handleChange} 
           removeProp = {this.removeTodo}
-          handleSearchProp = {this.handleSearch}
-          // search = {this.searchTodo}
+          handleSearchProp = {this.handleSearchChange}
+          search = {this.addSearch}
           
           />
       </div>

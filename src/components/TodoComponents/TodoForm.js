@@ -3,12 +3,12 @@ import React from 'react'
 const TodoForm = (props) => {
     return (
         <div className = 'todo-area'>
-            <form onSubmit ={props.addProp} >
+            <form  >
             <input
                     placeholder='search'
-                    value={props.formProp.todo.search}
+                    value={props.formProp.inputField}
                     onChange = {props.handleSearchProp}
-                    name = 'task'
+                    name = 'inputField'
                 />
                 <input
                     placeholder='..todo'
@@ -16,6 +16,7 @@ const TodoForm = (props) => {
                     onChange = {props.handleProp}
                     name = 'task'
                 />
+                <button onClick={props.search}>Search</button>
                 <button onClick={props.addProp}>Add Todo</button>
                 <button onClick={props.removeProp}>Clear Completed</button>
                 {/* <button onClick={props.search}>Search</button>  */}
